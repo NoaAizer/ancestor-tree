@@ -76,8 +76,6 @@ TEST_CASE("Test Family2") {
 
     CHECK(T2.find("father") == string("Mickey"));
     CHECK(T2.find("mother") == string("Chani"));
-    CHECK((T2.find("grandfather") == string("Shmuel"))||(T2.find("grandfather") == string("Gedalya")) );
-    CHECK((T2.find("grandmother") == string("Rachel"))||(T2.find("grandmother") == string("Shoshana")) );
     CHECK(T2.find("great-grandfather") == string("Asher"));
     CHECK(T2.find("great-grandmother") == string("Esther"));
     CHECK(T2.find("me") == string("Shay"));
@@ -125,8 +123,7 @@ TEST_CASE("Test Family3") {
 
     CHECK(T3.find("father") == string("David"));
     CHECK(T3.find("mother") == string("Sharon"));
-    CHECK((T3.find("grandfather") == string("Zvi"))||(T3.find("grandfather") == string("Aryeh")) );
-    CHECK((T3.find("grandmother") == string("Leah"))||(T3.find("grandmother") == string("Chaya")) );
+
     CHECK(T3.find("great-grandfather") == string("Refael"));
     CHECK(T3.find("great-grandmother") == string("Miriam"));
     CHECK(T3.find("great-great-grandfather") == string("Shlomo"));
