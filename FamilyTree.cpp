@@ -80,8 +80,6 @@ return relation;
 }
 
 string Tree::find (string relation){
-
-display();
  if(relation == "me") return this->name;
  if(relation == "mother" && this->mother!=NULL) return this->mother->name;
  if(relation == "father" && this->father!=NULL) return this->father->name;
@@ -97,8 +95,6 @@ if(relation.find("mother") != std::string::npos && relation.find("father") != st
 
 string Tree::findRel (Tree* current, string relation){
     if (current == NULL) return "";
-    cout << current->name << endl;
-    cout << "relation:" + relation << endl;
    
     if(relation == "grandmother")
     {
@@ -107,11 +103,8 @@ string Tree::findRel (Tree* current, string relation){
         return "";
     }
     else if(relation == "grandfather"){
-        cout << "if2:" << endl;
         if(current->mother!=NULL && current->mother->father!= NULL)return current->mother->father->name;
-        cout << "if22:" << endl;
         if(current->father!=NULL && current->father->father!= NULL)return current->father->father->name;
-        cout << "if23:" << endl;
         return "";
     }
     string sub1= findRel(current->father, relation.substr(6));
