@@ -6,44 +6,38 @@ using namespace std;
 namespace family{
 
     class Tree{
-
+        
         string name;
         Tree* father;
         Tree* mother;
         Tree* son;
-
+        
         public:
+       
         Tree(string name){
             this->name=name;
             this->father=NULL;
             this->mother=NULL;
             this->son=NULL;
         }
-        Tree& addFather(string son, string father){
-        cout << "add father" << endl;
-        return *this;
-        }
-        Tree& addMother(string son, string mother){
-            cout << "add mother" << endl;
-        return *this;
-        }
-
-        void display(){
-            cout << "display" << endl;
+         ~Tree(){
+             delete this->father;
+             delete this->mother;
         }
         
-        string relation(string name){
-            cout << "relation" << endl;
-            return "relation";
-        }
-        string find (string relation){
-              cout << "find" << endl;
-            return "find"; 
-        }
+        
+        Tree& addFather(string son, string father);
+        Tree& addMother(string son, string mother);
+        void display(); 
+        string relation(string name);
+        string find (string relation);
+        void remove(string name);
+        Tree* search (Tree* current , string name);
 
-        void remove(string name){
-               cout << "remove" << endl;
-        }
+        private:
 
+        void printTree(const std::string& prefix, const Tree* node, bool isLeft);
+        void printTree(const Tree* node);
+        string findRel (Tree* current, string relation);
     };
 }

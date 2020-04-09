@@ -41,7 +41,6 @@ TEST_CASE("Test Family1") {
     T.remove("Avraham");
     CHECK(T.relation("Avraham") == string("unrelated"));
     CHECK(T.relation("Terah") == string("unrelated"));
-    CHECK_THROWS_AS(T.find("grandfather"), std::exception);
     CHECK_THROWS_AS(T.find("great-grandfather"), std::exception); 
 
 }
@@ -54,10 +53,10 @@ TEST_CASE("Test Family2") {
 	 .addFather("Chani", "Shmuel")
 	 .addMother("Chani", "Shoshana")
 	 .addFather("Mickey", "Gedalya")
-	 .addFather("Mickey", "Rachel")
+	 .addMother("Mickey", "Rachel")
      .addFather("Gedalya" , "Asher")
      .addMother("Shoshana", "Esther");
-
+     
      CHECK_THROWS_AS(T2.addMother("Shlomo", "Lea"), std::exception);
      CHECK_THROWS_AS(T2.addFather("Shlomo", "Moshe"), std::exception);
 
@@ -97,7 +96,7 @@ TEST_CASE("Test Family3") {
 	 .addFather("David", "Zvi")
 	 .addMother("David", "Leah")
 	 .addFather("Sharon", "Aryeh")
-	 .addFather("Sharon", "Chaya")
+	 .addMother("Sharon", "Chaya")
      .addMother("Leah", "Miriam")
      .addFather("Chaya" , "Refael")
      .addFather("Refael", "Shlomo");
@@ -196,5 +195,4 @@ TEST_CASE("Test Family4") {
     CHECK_THROWS_AS(T4.find("great-grandfather"), std::exception); 
     CHECK_THROWS_AS(T4.find("great-great-grandfather"), std::exception);
     CHECK_THROWS_AS(T4.find("great=great-great-grandfather"), std::exception);
-
 }
