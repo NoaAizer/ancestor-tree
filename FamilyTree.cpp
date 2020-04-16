@@ -52,8 +52,6 @@ string Tree::relation(string name){
 
     int counter =0;
     
-    // if(dest->son->father->name == name) return "father";
-    // if(dest->son->mother->name == name) return "mother";
     
     string relation="";
     while(dest->name!= this->name){
@@ -71,8 +69,6 @@ string Tree::relation(string name){
     }
 
     while(counter>2){
-        // if(counter ==3)
-        //     // relation ="grand" + relation;
         relation="great-" + relation;
         counter--;
     }
@@ -112,7 +108,7 @@ string Tree::findRel (Tree* current, string relation){
     string sub2= findRel(current->mother, relation.substr(6));
     if(sub2!="") return sub2;
     
-    cout << "sub1:" + sub1 << endl;
+    
     return sub1+sub2;
 }
 
@@ -120,13 +116,17 @@ void Tree::remove(string name){
     if(this->name == name)
          throw runtime_error {"This is unvalid to remove the root! "};
     Tree* toRemove = search (this, name);
-    if(toRemove == NULL)return;
-    if(toRemove->son!=NULL)
-    {
-        if(toRemove->son->father->name == name) toRemove->son->father=NULL;
-        else if(toRemove->son->mother->name == name) toRemove->son->mother=NULL;
+    if(toRemove == NULL){
+        throw runtime_error {"There is no person in the tree named: "+name};
+        return;
     }
-
+    if(toRemove->son!=NULL)
+    {    
+        if(toRemove->son->father != NULL && toRemove->son->father->name == name)
+            toRemove->son->father=NULL;
+        else if(toRemove->son->mother != NULL && toRemove->son->mother->name == name)
+            toRemove->son->mother=NULL;
+    }
     delete toRemove;
  
 }
